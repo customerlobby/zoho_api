@@ -10,7 +10,7 @@ module ZohoApi
         end
 
         def contact(uuid, params = {})
-          get("contacts/#{uuid}", params)['contact']
+          get("contacts/#{uuid}", params)['data']
         end
       end
     end

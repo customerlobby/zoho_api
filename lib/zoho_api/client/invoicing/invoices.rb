@@ -10,7 +10,7 @@ module ZohoApi
         end
 
         def invoice(uuid, params = {})
-          get("invoices/#{uuid}", params)['invoice']
+          get("invoices/#{uuid}", params)['data']
         end
       end
     end
