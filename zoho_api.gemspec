@@ -6,7 +6,7 @@ require 'zoho_api/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'zoho_api'
-  spec.version       = ZohoApi::VERSION
+  spec.version       = ZohoApi::Version
   spec.authors       = ['Customer Lobby']
   spec.email         = ['dev@customerlobby.com']
 

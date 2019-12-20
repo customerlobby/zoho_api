@@ -23,7 +23,7 @@ module ZohoApi
 
       # Perform an HTTP request
       def request(method, path, options)
-        connection_method = if options.delete(:request_token)
+        connection_method = if options.present? && options.delete(:request_token)
                               token_connection(options.delete(:params) || {})
                             else
                               connection
