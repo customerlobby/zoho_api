@@ -1,8 +1,6 @@
 # ZohoApi
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/zoho_api`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+A Ruby wrapper for the Zoho REST API.
 
 ## Installation
 
@@ -22,22 +20,109 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Configuration
 
-## Development
+Before you can make calls to Zoho you must configure the library with a valid client_id, client_secret and redirect_uri.
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+There are two ways to configure the gem. You can pass a hash of configuration options when you create
+a client, or you can use a configure block.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+Using client method with access and refresh tokens:
+```ruby
+client = ZohoApi.client(client_id: "YOUR_CLIENT_ID_HERE",
+                        client_secret: "YOUR_CLIENT_SECRET_HERE",
+                        redirect_uri: "YOUR_REDIRECT_URI_HERE",
+                        access_token: "YOUR_ACCESS_TOKEN_HERE",
+                        refresh_token: "YOUR_REFRESH_TOKEN_HERE")
+```
+
+Using configure block with access and refresh tokens
+```ruby
+ZohoApi.configure do |config|
+  config.client_id = "YOUR_CLIENT_ID_HERE"
+  config.client_secret = "YOUR_CLIENT_SECRET_HERE"
+  config.redirect_uri = "YOUR_REDIRECT_URI_HERE"
+  config.access_token = "YOUR_ACCESS_TOKEN_HERE"
+  config.refresh_token = "YOUR_REFRESH_TOKEN_HERE"
+end
+
+client = ZohoApi.client
+```
+
+Using client method with auth_code:
+```ruby
+client = ZohoApi.client(client_id: "YOUR_CLIENT_ID_HERE",
+                        client_secret: "YOUR_CLIENT_SECRET_HERE",
+                        redirect_uri: "YOUR_REDIRECT_URI_HERE",
+                        auth_code: "YOUR_AUTH_CODE_HERE")
+```
+
+Using configure block with auth_code
+```ruby
+ZohoApi.configure do |config|
+  config.client_id = "YOUR_CLIENT_ID_HERE"
+  config.client_secret = "YOUR_CLIENT_SECRET_HERE"
+  config.redirect_uri = "YOUR_REDIRECT_URI_HERE"
+  config.auth_code = "YOUR_AUTH_CODE_HERE"
+end
+
+client = ZohoApi.client
+
+```
+
+### Token Apis
+
+Generate access and refresh tokens from auth_code
+```ruby
+client.fetch_tokens
+```
+Generate access token from refresh token
+```ruby
+client.renew_token
+```
+
+*Note: You don't need to refresh client's access and refresh tokens after hitting these apis*
+
+
+### Customer Apis (Zoho Invoice)
+
+Get specific contact details
+```ruby
+client.contact('CONTACT_UUID')
+```
+Get all the contacts
+```ruby
+client.contacts
+```
+Get contacts by page
+ ```ruby
+ # default value of page is 1
+ # default value of per_page is 200  
+client.clients(page: 2, per_page: 10)
+```
+
+### Invoice Apis (Zoho Invoice)
+
+Get specific invoice details
+```ruby
+client.invoice('INVOICE_UUID')
+```
+Get all the invoices
+```ruby
+client.invoices
+```
+Get invoices by page
+ ```ruby
+ # default value of page is 1
+ # default value of per_page is 200  
+client.invoices(page: 2, per_page: 10)
+```
+
 
 ## Contributing
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/zoho_api. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
-
-## License
-
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
-
-## Code of Conduct
-
-Everyone interacting in the ZohoApi project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/zoho_api/blob/master/CODE_OF_CONDUCT.md).
