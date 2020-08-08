@@ -9,5 +9,7 @@ module ZohoApi
     include ZohoApi::Client::Token
     include ZohoApi::Client::Invoicing::Contacts
     include ZohoApi::Client::Invoicing::Invoices
+    include ZohoApi::Client::Books::Contacts
+    include ZohoApi::Client::Books::Invoices
   end
 end
