@@ -3,6 +3,8 @@
 module ZohoApi
   # Configuration for ZohoApi
   module Configuration
+    VALID_MODULES = %i[books invoices].freeze
+
     VALID_OPTIONS_KEYS = %i[
       client_id
       client_secret
@@ -13,6 +15,7 @@ module ZohoApi
       api_version
       adapter
       endpoint
+      environment
     ].freeze
 
     # By default don't set the access token.
@@ -29,6 +32,9 @@ module ZohoApi
 
     # By default use the main api URL.
     DEFAULT_ENDPOINT = 'invoice.zoho.com'
+
+    # By default use environment as :live
+    DEFAULT_ENVIRONMENT = :live
 
     TOKEN_URL = 'https://accounts.zoho.com'
 
@@ -57,6 +63,7 @@ module ZohoApi
       self.api_version = DEFAULT_API_VERSION
       self.endpoint = DEFAULT_ENDPOINT
       self.adapter = DEFAULT_ADAPTER
+      self.environment = DEFAULT_ENVIRONMENT
     end
   end
 end
