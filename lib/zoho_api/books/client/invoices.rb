@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module ZohoApi
-  class Client
-    module Invoicing
+  module Books
+    class Client
       # Api wrapper for invoicing invoices apis
       module Invoices
         def invoices(params = {})
