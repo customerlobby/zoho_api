@@ -16,7 +16,7 @@ module ZohoApi
       end
 
       def module_endpoint(sandbox)
-        sandbox ? 'books-test.zoho.com' : 'books.zoho.com'
+        sandbox ? 'invoice-test.zoho.com' : 'invoice.zoho.com'
       end
 
       def config(options = {})
