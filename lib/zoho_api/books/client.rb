@@ -10,6 +10,7 @@ module ZohoApi
       include ZohoApi::Client::Token
       include ZohoApi::Books::Client::Contacts
       include ZohoApi::Books::Client::Invoices
+      include ZohoApi::Books::Client::Organization
 
       def initialize(options = {})
         super(options.merge config(options))
