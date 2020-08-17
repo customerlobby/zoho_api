@@ -6,18 +6,18 @@ module ZohoApi
       # Api wrapper for invoicing invoices apis
       module Invoices
         def invoices(params = {})
-          validate(params, :organization_id)
-          get('invoices', params)
+          validate :organization_id
+          get 'invoices', params.merge(organization_id: organization_id)
         end
 
         def invoice(uuid, params = {})
-          validate(params, :organization_id)
-          get("invoices/#{uuid}", params)['data']
+          validate :organization_id
+          get("invoices/#{uuid}", params.merge(organization_id: organization_id))['data']
         end
 
-        def validate(params = {}, *args)
+        def validate(*args)
           args.each do |field|
-            raise ZohoApi::BadRequestError, "#{field} is missing in request" unless params[field]
+            raise ZohoApi::BadRequestError, "#{field} is missing in request" unless send(field)
           end
         end
       end

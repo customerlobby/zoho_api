@@ -14,6 +14,7 @@ module ZohoApi
       adapter
       endpoint
       sandbox
+      organization_id
     ].freeze
 
     # By default don't set the access token.
