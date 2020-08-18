@@ -13,6 +13,8 @@ module ZohoApi
       api_version
       adapter
       endpoint
+      sandbox
+      organization_id
     ].freeze
 
     # By default don't set the access token.
@@ -57,6 +59,7 @@ module ZohoApi
       self.api_version = DEFAULT_API_VERSION
       self.endpoint = DEFAULT_ENDPOINT
       self.adapter = DEFAULT_ADAPTER
+      self.sandbox = false
     end
   end
 end
