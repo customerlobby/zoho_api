@@ -57,6 +57,7 @@ module ZohoApi
         opts['page'] = options[:page] if options.key?(:page)
         opts['per_page'] = options[:per_page] if options.key?(:per_page)
         opts['sort_column'] = options[:sort_by] if options.key?(:sort_by)
+        opts['organization_id'] = options[:organization_id] if options.key?(:organization_id)
         opts
       end
     end

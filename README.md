@@ -27,47 +27,31 @@ Before you can make calls to Zoho you must configure the library with a valid cl
 There are two ways to configure the gem. You can pass a hash of configuration options when you create
 a client, or you can use a configure block.
 
-Using client method with access and refresh tokens:
+Initializing Zoho Invoice client:
+```ruby
+client = ZohoApi::Invoice::Client.new(client_id: "YOUR_CLIENT_ID_HERE",
+                                      client_secret: "YOUR_CLIENT_SECRET_HERE",
+                                      redirect_uri: "YOUR_REDIRECT_URI_HERE",
+                                      access_token: "YOUR_ACCESS_TOKEN_HERE",
+                                      refresh_token: "YOUR_REFRESH_TOKEN_HERE")
+```
+
+Initializing Zoho Books client:
+```ruby
+client = ZohoApi::Books::Client.new(client_id: "YOUR_CLIENT_ID_HERE",
+                                    client_secret: "YOUR_CLIENT_SECRET_HERE",
+                                    redirect_uri: "YOUR_REDIRECT_URI_HERE",
+                                    access_token: "YOUR_ACCESS_TOKEN_HERE",
+                                    refresh_token: "YOUR_REFRESH_TOKEN_HERE")
+```
+
+Initializing Zoho Books client with sandbox environment:
 ```ruby
 client = ZohoApi.client(client_id: "YOUR_CLIENT_ID_HERE",
                         client_secret: "YOUR_CLIENT_SECRET_HERE",
                         redirect_uri: "YOUR_REDIRECT_URI_HERE",
-                        access_token: "YOUR_ACCESS_TOKEN_HERE",
-                        refresh_token: "YOUR_REFRESH_TOKEN_HERE")
-```
-
-Using configure block with access and refresh tokens
-```ruby
-ZohoApi.configure do |config|
-  config.client_id = "YOUR_CLIENT_ID_HERE"
-  config.client_secret = "YOUR_CLIENT_SECRET_HERE"
-  config.redirect_uri = "YOUR_REDIRECT_URI_HERE"
-  config.access_token = "YOUR_ACCESS_TOKEN_HERE"
-  config.refresh_token = "YOUR_REFRESH_TOKEN_HERE"
-end
-
-client = ZohoApi.client
-```
-
-Using client method with auth_code:
-```ruby
-client = ZohoApi.client(client_id: "YOUR_CLIENT_ID_HERE",
-                        client_secret: "YOUR_CLIENT_SECRET_HERE",
-                        redirect_uri: "YOUR_REDIRECT_URI_HERE",
-                        auth_code: "YOUR_AUTH_CODE_HERE")
-```
-
-Using configure block with auth_code
-```ruby
-ZohoApi.configure do |config|
-  config.client_id = "YOUR_CLIENT_ID_HERE"
-  config.client_secret = "YOUR_CLIENT_SECRET_HERE"
-  config.redirect_uri = "YOUR_REDIRECT_URI_HERE"
-  config.auth_code = "YOUR_AUTH_CODE_HERE"
-end
-
-client = ZohoApi.client
-
+                        auth_code: "YOUR_AUTH_CODE_HERE",
+                        sandbox: true)
 ```
 
 ### Token Apis
@@ -84,7 +68,7 @@ client.renew_token
 *Note: You don't need to refresh client's access and refresh tokens after hitting these apis*
 
 
-### Customer Apis (Zoho Invoice)
+### Customer Apis (Zoho Invoice/Books)
 
 Get specific contact details
 ```ruby
@@ -101,7 +85,7 @@ Get contacts by page
 client.clients(page: 2, per_page: 10)
 ```
 
-### Invoice Apis (Zoho Invoice)
+### Invoice Apis (Zoho Invoice/Books)
 
 Get specific invoice details
 ```ruby

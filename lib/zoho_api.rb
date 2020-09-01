@@ -8,7 +8,8 @@ require 'zoho_api/version'
 
 require File.expand_path('zoho_api/configuration', __dir__)
 require File.expand_path('zoho_api/api', __dir__)
-require File.expand_path('zoho_api/client', __dir__)
+require File.expand_path('zoho_api/books/client', __dir__)
+require File.expand_path('zoho_api/invoice/client', __dir__)
 require File.expand_path('zoho_api/error', __dir__)
 require File.expand_path('faraday/auth', __dir__)
 require File.expand_path('faraday/raise_exception', __dir__)
