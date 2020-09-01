@@ -13,7 +13,7 @@ module ZohoApi
       end
       
       def from_file
-        File.open(filename).read        
+        File.open(filename).read.strip        
       end  
       
       def from_version
