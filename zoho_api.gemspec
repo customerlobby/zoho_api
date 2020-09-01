@@ -12,14 +12,14 @@ Gem::Specification.new do |spec|
 
   spec.summary       = 'Ruby gem for integration of Zoho Apis'
   spec.description   = 'This gem acts a ruby sdk/wrapper for all zoho apis'
-  # spec.homepage      = 'https://github.com/customerlobby/zoho_api'
+  spec.homepage      = 'https://github.com/customerlobby/zoho_api'
   spec.license       = 'MIT'
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
   if spec.respond_to?(:metadata)
-    # spec.metadata['allowed_push_host'] = 'github.com'
-    # gem.metadata = { "github_repo" => "ssh://github.com/customerlobby/zoho_api" }
+    spec.metadata['allowed_push_host'] = 'github.com'
+    gem.metadata = { "github_repo" => "https://github.com/customerlobby/zoho_api" }
   else
     raise 'RubyGems 2.0 or newer is required to protect against ' \
       'public gem pushes.'
