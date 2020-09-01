@@ -9,8 +9,24 @@ module ZohoApi
     class << self
       # @return [String]
       def to_s
-        [MAJOR, MINOR, PATCH].compact.join('.')
+        File.exist?(filename) ? from_file : from_version      
       end
+      
+      def from_file
+        File.open(filename).read        
+      end  
+      
+      def from_version
+        [MAJOR, MINOR, PATCH].compact.join('.')
+      end  
+      
+      def filepath
+        File.expand_path('zoho_api/VERSION', __dir__)
+      end
+      
+      def filename
+        'VERSION'
+      end    
     end
   end
 end
