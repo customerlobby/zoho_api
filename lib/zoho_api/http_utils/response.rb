@@ -10,7 +10,10 @@ module ZohoApi
                rescue StandardError
                  response_hash
                end
+
+        data ||= response_hash
         data.extend(self)
+
         if data.respond_to?(:error)
           raise ZohoApi::AuthorizationError, data.error
         end
