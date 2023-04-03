@@ -4,7 +4,7 @@ module ZohoApi
   class Version
     MAJOR = 0 unless defined? ZohoApi::Version::MAJOR
     MINOR = 2 unless defined? ZohoApi::Version::MINOR
-    PATCH = 6 unless defined? ZohoApi::Version::PATCH
+    PATCH = 7 unless defined? ZohoApi::Version::PATCH
 
     class << self
       # @return [String]
